@@ -22,9 +22,6 @@ int main()
 
     while(v == 0) //Il ciclo verifica che il gioco non sia terminato
     {
-
-        if(v == 0) //Se il gioco non è ancora terminato eseguo la mossa
-        {
             //Piccolo algoritmo per alternare i giocatori
             giocatore=(giocatore%2)+1;
             printf("\nGiocatore %d inserisci le coordinate: ", giocatore);
@@ -44,9 +41,9 @@ int main()
             else
                 t[a-1][b-1]='O';
             giocatore+=2;
-        }
+
             //Nella riga di seguito stampo la matrice di gioco aggiornata
-            printf("\nQuesta è la situazione di gioco:\n\n[%c][%c][%c]\n[%c][%c][%c]\n[%c][%c][%c]\n", t[0][0], t[0][1], t[0][2], t[1][0], t[1][1], t[1][2], t[2][0], t[2][1], t[2][2]);
+            printf("\nQuesta e' la situazione di gioco:\n\n[%c][%c][%c]\n[%c][%c][%c]\n[%c][%c][%c]\n", t[0][0], t[0][1], t[0][2], t[1][0], t[1][1], t[1][2], t[2][0], t[2][1], t[2][2]);
 
             //Inizio serie di cicli che controllano lo stato del gioco
             //Controllo righe
@@ -65,22 +62,25 @@ int main()
             {
                 if(t[0][i] == t[1][i] && t[1][i] == t[2][i] && t[0][i] != ' ')
                 {
-                    printf("\nC'e' un tris di %c sulla colonna %d!", t[i][0], i+1);
+                    printf("\nC'e' un tris di %c sulla colonna %d!", t[0][i], i+1);
                     printf("\nIl giocatore %d vince!\n\n", giocatore-2);
                     v=1;
                 }
             }
 
             //Controllo diagonali
-            for(i=0;i<3;i++)
-            {
-                if((t[i][i] == t[i+1][i+1] && t[i+1][i+1] == t[i+2][i+2] && t[i][i] != ' ') || (t[i][i+2] == t[i+1][i+1] && t[i+1][i+1] == t[i+2][i] && t[i][i+2] != ' '))
+                if(t[0][0] == t[1][1] && t[1][1] == t[2][2] && t[1][1]!=" ")
                 {
                     printf("\nC'e' un tris diagonale di %c!", t[1][1]);
                     printf("\nIl giocatore %d vince!\n\n", giocatore-2);
                     v=1;
                 }
-            }
+                else if (t[0][2] == t[1][1] && t[1][1] == t[2][0] && t[1][1]!=" ")
+                {
+                    printf("\nC'e' un tris diagonale di %c!", t[1][1]);
+                    printf("\nIl giocatore %d vince!\n\n", giocatore-2);
+                    v=1;
+                }
 
             //Controllo che identifica uno stato di parità
             par=0;
