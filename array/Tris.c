@@ -69,13 +69,13 @@ int main()
             }
 
             //Controllo diagonali
-                if(t[0][0] == t[1][1] && t[1][1] == t[2][2] && t[1][1]!=" ")
+                if(t[0][0] == t[1][1] && t[1][1] == t[2][2] && t[1][1]!=' ')
                 {
                     printf("\nC'e' un tris diagonale di %c!", t[1][1]);
                     printf("\nIl giocatore %d vince!\n\n", giocatore-2);
                     v=1;
                 }
-                else if (t[0][2] == t[1][1] && t[1][1] == t[2][0] && t[1][1]!=" ")
+                else if (t[0][2] == t[1][1] && t[1][1] == t[2][0] && t[1][1]!=' ')
                 {
                     printf("\nC'e' un tris diagonale di %c!", t[1][1]);
                     printf("\nIl giocatore %d vince!\n\n", giocatore-2);
