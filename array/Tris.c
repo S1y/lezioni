@@ -30,11 +30,12 @@ int main()
             {
                 printf("\nCoordinata inesistente, riprova: ");
                 scanf("%d %d", &a, &b);
-            }
-            while(t[a-1][b-1]!=' ') //Controllo anti-cheat (il giocatore non può sovrascrivere una mossa già effettuata)
-            {
-                printf("\nNon barare! Riprova: ");
-                scanf("%d %d", &a, &b);
+            
+                while(t[a-1][b-1]!=' ') //Controllo anti-cheat (il giocatore non può sovrascrivere una mossa già effettuata)
+                {
+                    printf("\nNon barare! Riprova: ");
+                    scanf("%d %d", &a, &b);
+                }
             }
             if (giocatore == 1) //Controllo identità del giocatore
                 t[a-1][b-1]='X';
