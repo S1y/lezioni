@@ -84,7 +84,6 @@ int main()
                                         b=p+1;
                                         ok=1;
                                         p=3;
-                                        i=3;
                                     }
                                 }
                             }
@@ -96,15 +95,14 @@ int main()
                             m=t2[0][i]*t2[1][i]*t2[2][i]; //Analogo controllo per le colonne
                             if(m==4||m==9)
                             {
-                                for(p=0;i<3;p++) //Assegnazione coordinate
+                                for(p=0;p<3;p++) //Assegnazione coordinate
                                 {
                                     if(t2[p][i]==1)
                                     {
-                                        a=i+1;
-                                        b=p+1;
+                                        a=p+1;
+                                        b=i+1;
                                         ok=1;
                                         p=3;
-                                        i=3;
                                     }
                                 }
                             }
@@ -117,31 +115,41 @@ int main()
                             md1*=t2[m][m];
                         md2=t2[2][0]*t2[1][1]*t2[0][2];
 
-                        if(md1==4||md1==9||md2==4||md2==9) //Assegnazione coordinate
+                        if(md1==4||md1==9) //Assegnazione coordinate 1
                         {
                             for(i=0;i<3;i++)
                             {
                                     if(t2[i][i]==1)
                                     {
                                         a=i+1;
-                                        b=p+1;
+                                        b=i+1;
                                         ok=1;
                                         i=3;
                                     }
-                                    else if(t2[0][2]==1)
-                                    {
-                                        a=1;
-                                        b=3;
-                                        ok=1;
-                                        i=3;
-                                    }
-                                    else if(t2[2][0]==1)
-                                    {
-                                        a=3;
-                                        b=1;
-                                        ok=1;
-                                        i=3;
-                                    }
+                            }
+                        }
+                        else if(md2==4||md2==9)
+                        {
+                            if(t2[1][1]==1)
+                            {
+                                a=2;
+                                b=2;
+                                ok=1;
+                                i=3;
+                            }
+                            else if(t2[0][2]==1)
+                            {
+                                a=1;
+                                b=3;
+                                ok=1;
+                                i=3;
+                            }
+                            else if(t2[2][0]==1)
+                            {
+                                a=3;
+                                b=1;
+                                ok=1;
+                                i=3;
                             }
                         }
 
@@ -152,6 +160,7 @@ int main()
                         {
                             a=(rand()%3)+1;
                             b=(rand()%3)+1;
+                            printf("\nRANDOM\n");
                         }
                     }while(t[a-1][b-1]!=' '); //Controllo anti-cheat (anche il PC avrebbe voglia di sostituire una potenziale mossa se ne avesse la possibilità)
 
