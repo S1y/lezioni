@@ -52,6 +52,11 @@ int main()
                             scanf("%d %d", &a, &b);
                         }
                     }
+                    while(t2[a-1][b-1]!=1)
+                    {
+                        printf("\nNon barare! Riprova: ");
+                        scanf("%d %d", &a, &b);
+                    }
                 }
 
                 //Funzione giocatore automatico (il comando "sleep" serve solo a dare un tocco di realismo e umaintà)
@@ -112,7 +117,7 @@ int main()
                             md1*=t2[m][m];
                         md2=t2[2][0]*t2[1][1]*t2[0][2];
 
-                        if(md1==4||md1==9||md2==4||md2==9) //Assegnazione cooordinate
+                        if(md1==4||md1==9||md2==4||md2==9) //Assegnazione coordinate
                         {
                             for(i=0;i<3;i++)
                             {
