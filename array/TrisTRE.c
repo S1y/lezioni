@@ -69,7 +69,7 @@ int main()
     char t[DIM][DIM]; //Dichiaro una matrice di caratteri (3x3) per la stampa della griglia di gioco
     int t2[DIM][DIM]; //Dichiaro una matrice di interi (3x3) per permettere all'IA di calcolare la mossa
 
-    //Inizializzo la matrice grafica con il carattere spazio e quella logica con 1
+    //Inizializzo la matrice grafica con il carattere spazio e quella logica con 0
     for(i=0;i<3;i++)
         for(p=0;p<3;p++)
         {
@@ -113,7 +113,7 @@ int main()
             }
         }
 
-        //Funzione giocatore automatico (la funzione "sleep" serve solo a dare un tocco di realismo e umaintà, in realtà il calcolo è spaventosamente più rapido)
+        //Funzione giocatore automatico
         else if((scelta==2 && giocatore==2) || scelta==3)
         {
             printf("\nTurno del Cyber-giocatore %d\n", giocatore);
@@ -133,7 +133,6 @@ int main()
 
         //Nella riga di seguito stampo la matrice di gioco aggiornata
         printf("\nQuesta e' la situazione di gioco:\n\n[%c][%c][%c]\n[%c][%c][%c]\n[%c][%c][%c]\n", t[0][0], t[0][1], t[0][2], t[1][0], t[1][1], t[1][2], t[2][0], t[2][1], t[2][2]);
-
 
         for(i=0;i<3;i++)
             for(p=0;p<3;p++)
