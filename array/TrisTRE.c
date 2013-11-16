@@ -39,26 +39,26 @@ void AutoMossa(int t2[DIM][DIM], int cv, int giocatore, int *posmigliore, int *p
 {
     int i, p, pos, buona;
 
-for(*perfetta=-99,i=0;i<3;i++)
+for(*perfetta=-2,i=0;i<3;i++) //Verifico tutte le situazioni possibili di gioco
     for(p=0;p<3;p++)
-        if (t2[i][p]==0)
+        if (t2[i][p]==0) //Se la casella è vuota calcolo il susseguirsi di mosse possibili
         {
-            t2[i][p]=giocatore;
-            if (ControlloTris(t2,giocatore)==1)
-                buona=cv;
-            else if (ControlloTris(t2,giocatore)==2)
+            t2[i][p]=giocatore; //Marco la casella con l'id giocatore
+            if (ControlloTris(t2,giocatore)==1) //Se faccio tris la mossa è buona
+                buona=cv; //ed equivale al numero di caselle vuote (così capisco qual è la migliore in assoluto)
+            else if (ControlloTris(t2,giocatore)==2) //Se finisce pari non m'interessa che sia buona o meno
                 buona=0;
             else
             {
-                AutoMossa(t2,cv--,(giocatore%2)+1,&pos,&buona);
-                buona=-buona;
+                AutoMossa(t2,cv--,(giocatore%2)+1,&pos,&buona); //Richiamo la funzione stessa cambiando giocatore per continuare questo gioco "ipotetico" e valutare fin dove finisce
+                buona=-buona; //Se la mossa del giocatore precedente era buona allora la cambio di segno così diventa "non-buona" per il giocatore precedente
             }
-            if (buona>*perfetta)
+            if (buona>*perfetta) //Dopo che la partita ipotetica è terminata se la mossa buona è maggiore di perfetta (inizialmente è -2)
             {
-                *perfetta=buona;
-                *posmigliore=p+(i*10);
+                *perfetta=buona; //allora la mossa buona è perfetta
+                *posmigliore=p+(i*10); //assegno le coordinate ad un solo valore intero che andrò a scomporre più tardi fuori dalla funzione
             }
-            t2[i][p]=0;
+            t2[i][p]=0; //Dopo aver finito la partita ipotetica occorrerà liberare la casella dato che di fatto non dovrebbe essere occupata
         }
 }
 
